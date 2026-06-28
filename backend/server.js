@@ -8,10 +8,13 @@ const taskRoutes = require('./routes/taskRoutes');
 const app = express();
 
 // Middleware
+// Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
-  credentials: true,
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+app.options('*', cors());
 app.use(express.json());
 
 // Routes
